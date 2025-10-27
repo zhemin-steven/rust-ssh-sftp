@@ -1,0 +1,57 @@
+[package]
+name = "rust-ssh-sftp"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name"]
+description = "A cross-platform SSH/SFTP client similar to FinalShell"
+
+[dependencies]
+# SSH/SFTP 核心库 - 使用 russh 替代 ssh2
+russh = "0.44"
+russh-keys = "0.44"
+russh-sftp = "2.0"
+# 保留 ssh2 用于 SFTP（暂时）
+ssh2 = "0.9"
+# 命令行参数解析
+clap = { version = "4.5", features = ["derive"] }
+# 异步运行时
+tokio = { version = "1.35", features = ["full"] }
+# 终端交互
+crossterm = "0.27"
+# 异步标准库
+futures = "0.3"
+async-trait = "0.1"
+# 错误处理
+anyhow = "1.0"
+thiserror = "1.0"
+# 序列化/反序列化
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+# 配置文件
+toml = "0.8"
+# 日志
+log = "0.4"
+env_logger = "0.11"
+# 进度条
+indicatif = "0.17"
+# 颜色输出
+colored = "2.1"
+# 密码输入
+rpassword = "7.3"
+# 主目录路径
+dirs = "5.0"
+# 加密库
+aes-gcm = "0.10"
+argon2 = "0.5"
+rand = "0.8"
+base64 = "0.21"
+# GUI 框架
+eframe = "0.27"
+egui = "0.27"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
